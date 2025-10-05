@@ -1,4 +1,4 @@
-
+{
   "name": "ga2-e127c8",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {

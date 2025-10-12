@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - "**"
   workflow_dispatch:
 
 jobs:
@@ -14,10 +17,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: 24f2005976@ds.study.iitm.ac.in
-        run: echo "Hello, world!"
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-      - name: Run a simple command
+      - name: Install dependencies
         run: |
-          echo "This is a second step"
-          echo "GitHub Actions is working!"
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run pytest
+        run: pytest
+
+      - name: 24f2005976@ds.study.iitm.ac.in
+        run: echo "Verification step"
